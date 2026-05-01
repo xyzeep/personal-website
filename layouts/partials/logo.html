@@ -1,0 +1,8 @@
+{{ with .Site.Params.logo }}
+  {{ $img := resources.Get . }}
+  {{ with $img }}
+    <a href="{{ $.Site.Home.Permalink }}" class="site-image">
+      <img src="{{ .Permalink }}" alt="{{ $.Site.Title }}">
+    </a>
+  {{ end }}
+{{ end }}
