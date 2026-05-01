@@ -6,6 +6,14 @@
     <description>Recent content in Categories on Pawan Acharya</description>
     <generator>Hugo</generator>
     <language>en-us</language>
+    <lastBuildDate>Fri, 01 May 2026 23:18:40 +0545</lastBuildDate>
     <atom:link href="http://localhost:1313/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Default</title>
+      <link>http://localhost:1313/categories/default/</link>
+      <pubDate>Fri, 01 May 2026 23:18:40 +0545</pubDate>
+      <guid>http://localhost:1313/categories/default/</guid>
+      <description></description>
+    </item>
   </channel>
 </rss>

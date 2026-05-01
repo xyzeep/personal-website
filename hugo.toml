@@ -9,3 +9,7 @@ theme = 'smol'
   subtitle = "Aspiring Software Engineer"
   dateFmt = "2 January 2006"
   logo = "logo.jpeg"
+
+
+[markup.goldmark.renderer]
+  unsafe = true
