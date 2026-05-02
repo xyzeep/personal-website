@@ -1,0 +1,9 @@
+<div class="admonition {{ .Get 0 }}">
+  <div class="admonition-header">
+    {{ partial "icons/icon" (dict "vendor" "tabler" "name" "outline/info-circle") }}
+    <span>{{ .Get 0 | title }}</span>
+  </div>
+  <div class="admonition-content">
+    {{ .Inner | markdownify }}
+  </div>
+</div>

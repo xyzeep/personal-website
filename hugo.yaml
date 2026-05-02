@@ -3,12 +3,17 @@ locale: "en-us"
 title: "Pawan Acharya"
 theme: "smol"
 
-summaryLength: 60
+summaryLength: 1
+
+pagination:
+  disableAliases: false
+  pagerSize: 12
+  path: page
 
 params:
   author: "xyzeep"
   subtitle: "Aspiring Software Engineer"
-  datefmt: "2 january 2006"
+  datefmt: "2 January 2006"
   logo: "logo.jpeg"
 
 taxonomies:
