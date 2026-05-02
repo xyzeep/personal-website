@@ -5,7 +5,5 @@ slug: 2026-05-01-posts
 type: posts
 draft: false
 categories:
-  - default
 tags:
-  - default
 ---

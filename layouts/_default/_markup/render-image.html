@@ -1,0 +1,59 @@
+{{- $respSizes := slice "200" "400" "600" -}}
+{{- $alt := or .Title .Text -}}
+
+{{ if .Text }}
+  <figure>
+{{ end }}
+  {{- with or (.Page.Resources.Get .Destination) (resources.Get .Destination) -}}
+    {{ if eq .MediaType.SubType "svg" }}
+      <a href="{{ .RelPermalink }}" target="_blank">
+    {{ else }}
+      {{ if gt .Width 4000 }}
+        <a href="{{ ( .Resize "4000x webp photo" ).RelPermalink }}" target="_blank">
+      {{ else }}
+        <a href="{{ ( .Process "webp photo" ).RelPermalink }}" target="_blank">
+      {{ end }}
+    {{ end }}
+      <picture>
+        {{ if ne .MediaType.SubType "svg" }}
+          {{- $imgRsc := . -}}
+          {{- range $respSizes -}}
+            {{- if ge $imgRsc.Width . -}}
+              <source
+                type="image/webp"
+                media="(max-width: {{ . }}px)"
+                srcset="{{- ($imgRsc.Resize (print . "x webp photo") ).RelPermalink -}}"
+              >
+            {{- end -}}
+          {{- end -}}
+          {{ with .Resize "800x webp photo" }}
+            <img
+              loading="lazy"
+              src="{{ .RelPermalink }}"
+              width="{{ .Width }}"
+              height="{{ .Height }}"
+              {{- with $alt }}
+                alt="{{ . }}"
+              {{- end -}}
+            >
+          {{ end }}
+        {{ else }}
+          <img
+            loading="lazy"
+            src="{{ .RelPermalink }}"
+            {{- with $alt }}
+              alt="{{ . }}"
+            {{- end -}}
+          >
+        {{ end }}
+      </picture>
+    </a>
+  {{- else -}}
+    <a href="{{ .Destination | safeURL }}" target="_blank">
+      <img loading="lazy" src="{{ .Destination | safeURL }}" alt="{{ $alt }}">
+    </a>
+  {{- end -}}
+{{ if .Text }}
+    <figcaption><b>{{ .Text | safeHTML }}</b></figcaption>
+  </figure>
+{{ end }}

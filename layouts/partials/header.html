@@ -2,6 +2,11 @@
   <div class="name-and-subtitle">
     <div class="site-title">
       <a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a>
+    <span id="theme-switcher" class="link" style="cursor:pointer">
+        <span id="icon-moon">{{ partial "icons/icon" (dict "vendor" "tabler" "name" "outline/moon") }}</span>
+        <span id="icon-sun" style="display:none">{{ partial "icons/icon" (dict "vendor" "tabler" "name" "outline/sun-high") }}</span>
+    </span>
+
     </div>
     {{ with .Site.Params.Subtitle }}
     <div class="site-subtitle">{{ . }}</div>

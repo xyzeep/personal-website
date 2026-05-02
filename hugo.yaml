@@ -1,0 +1,27 @@
+baseurl: "https://example.org/"
+locale: "en-us"
+title: "Pawan Acharya"
+theme: "smol"
+
+summaryLength: 60
+
+params:
+  author: "xyzeep"
+  subtitle: "Aspiring Software Engineer"
+  datefmt: "2 january 2006"
+  logo: "logo.jpeg"
+
+taxonomies:
+  category: "categories"
+  tag: "tags"
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+    extensions:
+      linkify: true
+  parser:
+    attribute:
+      block: true
+      title: true
