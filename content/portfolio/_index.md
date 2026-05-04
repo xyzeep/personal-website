@@ -10,7 +10,7 @@ This is my CV. You may want to view my [resume](./Resume.pdf) instead.
 {{< /admonition >}}
 
 
-{{< admonition note>}}
+{{< admonition info>}}
 This portofolio is unfinished.
 {{< /admonition >}}
 

@@ -1,6 +1,10 @@
 @import 'iosevka';
 @import 'dark-theme';
 
+html {
+  zoom: 110%;
+}
+
 body {
 --fg-color: #333;
   --bg-color: #fff;
@@ -32,8 +36,8 @@ body {
   --table-border-color: #000;
   --table-nth-child-bg-color: #ccc;
 
-      --adm-bg: #1d1e20;
-    --adm-text: #e6e6e6;
+    --adm-bg: #fff;
+    --adm-text: #333;
     --adm-code-bg: #313244;
     --adm-code-text: #cdd6f4;
     --adm-blockquote-border: #45475a;
@@ -915,51 +919,169 @@ table:not(.gallery) {
   margin: 1rem 0;
   border-radius: 4px;
   overflow: hidden;
-  border-left: 4px solid #096AE1;
-  font-size: 1rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+  transition: box-shadow 0.3s ease;
+  position: relative;
+
   .admonition-header {
-     display: flex;
+    display: flex;
     align-items: center;
     gap: 0.5rem;
-    padding: 0.4rem 1rem;
-    font-weight: bold;
+    padding: 0.5rem 1rem;
+    font-weight: 600;
     font-size: 1.1rem;
+    border-radius: 4px 4px 0 0;
+    position: relative;
+    z-index: 1;
+    transition: color 0.3s ease;
+    color: var(--adm-type-header, var(--adm-type-color));
+
+    svg {
+      width: 1.1em;
+      height: 1.1em;
+      flex-shrink: 0;
+      transition: fill 0.3s ease;
+    }
+
+    span {
+      flex-grow: 1;
+    }
   }
 
   .admonition-content {
-     background-color: var(--adm-bg);
-  color: var(--adm-text);
-    padding: 1rem 1rem;
-    p:last-child { margin-bottom: 0; }
+    padding: 1rem;
+    border-radius: 0 0 4px 4px;
+    background-color: var(--adm-bg);
+    color: var(--adm-text);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    position: relative;
+
+    p {
+      margin-top: 0;
+      margin-bottom: 0.75rem;
+    }
+
+    ul, ol {
+      margin-top: 0;
+      margin-bottom: 0.75rem;
+      padding-left: 1.5rem;
+    }
+
+    blockquote {
+      margin: 0 0 0.75rem 0;
+      padding-left: 1rem;
+      border-left: 3px solid var(--adm-blockquote-border);
+      font-style: italic;
+      color: inherit;
+      transition: border-color 0.3s ease, color 0.3s ease;
+    }
+
+    code:not(pre > code) {
+      padding: 0.2em 0.4em;
+      border-radius: 3px;
+      font-size: 0.9em;
+      background-color: var(--adm-code-bg);
+      color: var(--adm-code-text);
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    pre {
+      margin: 0 0 0.75rem 0;
+      padding: 0.8rem 1rem;
+      border-radius: 3px;
+      overflow-x: auto;
+      background-color: var(--adm-code-bg);
+      transition: background-color 0.3s ease;
+
+      code {
+        background-color: transparent !important;
+        color: var(--adm-code-text);
+        padding: 0;
+        font-size: inherit;
+        border-radius: 0;
+      }
+    }
+
+    > *:last-child {
+      margin-bottom: 0;
+    }
   }
 
-&.note {
-  border-color: var(--adm-note);
-  .admonition-header {
-    background-color: rgba(var(--adm-note-rgb), var(--adm-header-bg-opacity));
-    color: var(--adm-note);
+  > summary {
+    list-style: none;
+    cursor: pointer;
+    position: relative;
+    z-index: 2;
+
+    &::-webkit-details-marker {
+      display: none;
+    }
+
+    &::after {
+      content: ">";
+      display: inline-block;
+      font-weight: bold;
+      margin-left: 0.6em;
+      transition: transform 0.2s ease-in-out;
+      transform-origin: center;
+      color: currentColor;
+    }
   }
-}
-&.warning {
-  border-color: var(--adm-warning);
-  .admonition-header {
-    background-color: rgba(var(--adm-warning-rgb), var(--adm-header-bg-opacity));
-    color: var(--adm-warning);
+
+  &[open] > summary::after {
+    transform: rotate(90deg);
   }
-}
-&.danger {
-  border-color: var(--adm-danger);
-  .admonition-header {
-    background-color: rgba(var(--adm-danger-rgb), var(--adm-header-bg-opacity));
-    color: var(--adm-danger);
+
+  @mixin admonition-type($var) {
+    border-left: 4px solid var(--adm-#{$var});
+    background-color: rgba(var(--adm-#{$var}-rgb), var(--adm-header-bg-opacity));
+    --adm-type-color: var(--adm-#{$var});
+    --adm-type-header: var(--adm-#{$var}-header, var(--adm-#{$var}));
   }
-}
-&.tip {
-  border-color: var(--adm-tip);
-  .admonition-header {
-    background-color: rgba(var(--adm-tip-rgb), var(--adm-header-bg-opacity));
-    color: var(--adm-tip);
-  }
+
+  &.abstract    { @include admonition-type(abstract); }
+  &.caution     { @include admonition-type(caution); }
+  &.code        { @include admonition-type(code); }
+  &.conclusion  { @include admonition-type(conclusion); }
+  &.danger      { @include admonition-type(danger); }
+  &.error       { @include admonition-type(error); }
+  &.example     { @include admonition-type(example); }
+  &.experiment  { @include admonition-type(experiment); }
+  &.goal        { @include admonition-type(goal); }
+  &.idea        { @include admonition-type(idea); }
+  &.important   { @include admonition-type(important); }
+  &.info        { @include admonition-type(info); }
+  &.memo        { @include admonition-type(memo); }
+  &.note        { @include admonition-type(note); }
+  &.notify      { @include admonition-type(notify); }
+  &.question    { @include admonition-type(question); }
+  &.quote       { @include admonition-type(quote); }
+  &.success     { @include admonition-type(success); }
+  &.task        { @include admonition-type(task); }
+  &.tip         { @include admonition-type(tip); }
+  &.warning     { @include admonition-type(warning); }
 }
 
+
+.admonition input[type="checkbox"] {
+  pointer-events: auto;
 }
+
+.post-nav {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.post-nav a {
+  flex: 1;
+}
+
+.post-nav .next {
+  text-align: left;
+}
+
+.post-nav .prev {
+  text-align: right;
+}
+

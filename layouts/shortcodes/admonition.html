@@ -1,9 +1,38 @@
-<div class="admonition {{ .Get 0 }}">
+{{ $type := .Get 0 }}
+
+{{ $icons := dict
+  "note" "outline/note"
+  "info" "outline/info-circle"
+  "tip" "outline/pencil"
+  "warning" "outline/alert-triangle"
+  "danger" "outline/flame"
+  "error" "outline/circle-letter-x"
+  "success" "outline/check"
+  "important" "outline/star"
+  "abstract" "outline/file-text"
+  "caution" "outline/alert-circle"
+  "code" "outline/code"
+  "conclusion" "outline/flag"
+  "example" "outline/book"
+  "experiment" "outline/flask"
+  "goal" "outline/target-arrow"
+  "idea" "outline/bulb"
+  "memo" "outline/clipboard"
+  "notify" "outline/bell"
+  "question" "outline/help-circle"
+  "quote" "outline/quote"
+  "task" "outline/list-check"
+}}
+
+{{ $icon := index $icons $type | default "outline/info-circle" }}
+
+<div class="admonition {{ $type }}">
   <div class="admonition-header">
-    {{ partial "icons/icon" (dict "vendor" "tabler" "name" "outline/info-circle") }}
-    <span>{{ .Get 0 | title }}</span>
+    {{ partial "icons/icon" (dict "vendor" "tabler" "name" $icon) }}
+    <span>{{ $type | title }}</span>
   </div>
   <div class="admonition-content">
-    {{ .Inner | markdownify }}
+      {{ .Inner | markdownify | replaceRE "disabled" "" | safeHTML }}
   </div>
 </div>
+

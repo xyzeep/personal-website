@@ -1,0 +1,46 @@
+{{ define "main" }}
+<main>
+    <article>
+        <h1>{{ .Title }}</h1>
+        {{ if eq .Section "posts" }}
+        <b>
+            <time>Posted on {{ .Date.Format (default "02 January 2006" .Site.Params.dateFmt) }}</time>
+            in
+            {{ range $i, $category := .Params.categories}}{{if $i}},
+            {{ end }}
+            <a href="{{ "/categories/" | relLangURL }}{{ $category | urlize }}">{{ $category }}</a>{{ end }}
+        </b>
+        •
+        {{.WordCount}} words • {{.ReadingTime}} minutes read
+
+        <br>
+        Tags:
+        {{ range $i, $tag := .Params.tags }}{{ if $i }},
+        {{ end }}
+        <a href="{{ "/tags/" | relLangURL }}{{ $tag | urlize }}">{{ $tag }}</a>{{ end }}
+
+        {{ end }}
+
+        <div class="post-content">
+            {{ .Content }}
+
+            <div class="post-nav">
+                {{ with .NextInSection }}
+                <a class="next" href="{{ .RelPermalink }}">
+                    « {{ .Title }}
+                </a>
+                {{ end }}
+
+                {{ with .PrevInSection }}
+                <a class="prev" href="{{ .RelPermalink }}">
+                {{ .Title }} »
+                </a>
+                {{ end }}
+            </div>
+
+        </div>
+
+</main>
+{{ partial "sidebar.html" . }}
+{{ end }}
+
