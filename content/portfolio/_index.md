@@ -11,7 +11,7 @@ This is my CV. You may want to view my [resume](./Resume.pdf) instead.
 
 
 {{< admonition note>}}
-This part in unfinished.
+This portofolio is unfinished.
 {{< /admonition >}}
 
 ## Experience

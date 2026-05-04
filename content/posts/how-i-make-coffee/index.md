@@ -1,16 +1,15 @@
 ---
-title: "Coffee"
-date: 2026-05-01T23:18:40+05:45
-slug: 2026-05-01-coffee
+title: "How I Make My Coffee"
+date: 2025-08-25T23:18:40+05:45
+slug: 2025-08-25-how-i-make-my-coffee
 type: posts
 draft: false
 cover: coffee.jpg
 categories:
-    - hi
-    - mom
+    - Lifestyle
+    - Food
 tags:
-    - um
-    - erm
+    - coffee
 ---
 Everyone has their own way of making coffee, and for me it's like a small everyday ritual that I really enjoy. I don't use any fancy machines or special tools because I don't own any. I like to keep it simple because I am forced to, but it still tastes great every single time.
 
