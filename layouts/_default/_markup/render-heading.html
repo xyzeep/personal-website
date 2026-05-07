@@ -1,0 +1,6 @@
+<h{{ .Level }} id="{{ .Anchor }}">
+  {{ .Text | safeHTML }}
+  <a class="permalink" href="#{{ .Anchor }}">
+    {{ readFile "assets/icons/tabler/outline/link.svg" | safeHTML }}
+  </a>
+</h{{ .Level }}>

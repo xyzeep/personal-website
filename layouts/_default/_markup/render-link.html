@@ -1,0 +1,8 @@
+<a href="{{ .Destination }}">
+  {{- if strings.Contains .Destination "github.com" -}}
+    {{ readFile "assets/icons/github.svg" | safeHTML }}
+  {{- else if strings.Contains .Destination "youtube.com" -}}
+    {{ readFile "assets/icons/youtube.svg" | safeHTML }}
+  {{- end -}}
+  {{ .Text | safeHTML }}
+</a>

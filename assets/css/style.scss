@@ -164,7 +164,13 @@ h6 {
     flex-wrap: wrap;
 
     .permalink {
-        display: flex;
+      display: flex;
+
+      svg {
+        width: 0.9em;
+        height: 0.9em;
+        }
+
     }
 
     &:hover .permalink {
@@ -397,6 +403,13 @@ details.advent-of-code-part-expander {
 details.portfolio-item {
     margin-bottom: 1em;
 
+        .project-image {
+          width: 100%;
+          max-width: 600px;
+          border-radius: 0.5rem;
+          margin-top: 0.55rem;
+        }
+
     >summary {
         background-color: var(--expander-summary-color);
         display: grid;
@@ -413,6 +426,7 @@ details.portfolio-item {
             align-items: center;
         }
 
+
         div.company-logo {
             grid-area: icon;
             display: flex;
@@ -421,7 +435,6 @@ details.portfolio-item {
 
             img {
                 opacity: 1;
-
                 &.with-bg {
                     border-radius: 0.5rem;
                     background-color: white;
@@ -1085,3 +1098,8 @@ table:not(.gallery) {
   text-align: right;
 }
 
+.link-with-icon svg {
+  width: 1.2em;
+  height: 1.2em;
+  vertical-align: top;
+}
