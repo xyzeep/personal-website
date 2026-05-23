@@ -1,0 +1,22 @@
+<article>
+    <h1><a href="{{ .RelPermalink }}">{{ .Title }}</a></h1>
+    <b><time>Posted on {{ .Date.Format (default "02 January 2006" .Site.Params.dateFmt) }}</time>
+    {{ with .Params.categories }}
+    in
+    {{ range $i, $cat := . }}{{ if $i }}, {{ end }}<a href="{{ "/categories/" | relLangURL }}{{ $cat | urlize }}">{{ $cat }}</a>{{ end }}
+    {{ end }}
+    </b>•
+    {{ .WordCount }} words • {{ .ReadingTime }} minutes read<br>Tags:
+    {{ range .Params.tags }}
+    <a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}">{{ . }}</a>
+    {{ end }}
+    <div class="post-summary">
+        {{ with .Resources.GetMatch .Params.cover }}
+        <img class="summary-image" src="{{ .RelPermalink }}" alt="">
+        {{ end }}
+        <div class="summary-text">
+            <div class="summary">{{ .Summary }}</div>
+            <a href="{{ .RelPermalink }}">Read more...</a>
+        </div>
+    </div>
+</article>
