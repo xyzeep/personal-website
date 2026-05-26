@@ -1103,3 +1103,62 @@ table:not(.gallery) {
   height: 1.2em;
   vertical-align: top;
 }
+// --------------------------
+
+
+.buymemomo-wrap {
+  display: flex;
+  justify-content: center;
+  padding: 1rem 0;
+}
+
+.buymemomo-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 1.5rem 1rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  max-width: 300px;
+  width: 100%;
+}
+
+.buymemomo-emoji {
+  font-size: 2.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.buymemomo-heading {
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem;
+  color: inherit;
+}
+
+.buymemomo-subtext {
+  font-size: 1rem;
+  color: #888;
+  margin: 0 0 1.25rem;
+  line-height: 1.6;
+}
+
+.buymemomo-btn {
+  display: inline-block;
+  padding: 0.6rem 1.4rem;
+  background-color: #d64000;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background-color 0.2s ease;
+}
+
+.buymemomo-btn:hover {
+  background-color: #b83800;
+}
+
+a.buymemomo-btn:hover {
+  background-color: #b83800;
+  color: #fff;
+  text-decoration: none;
+}
