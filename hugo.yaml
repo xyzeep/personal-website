@@ -14,7 +14,7 @@ params:
   author: "xyzeep"
   subtitle: "CS & AI Undergrad | Builder & Learner"
   datefmt: "2 January 2006"
-  logo: "logo1.jpeg"
+  logo: "logo.jpeg"
 
 taxonomies:
   category: "categories"
