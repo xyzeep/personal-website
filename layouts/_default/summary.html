@@ -7,9 +7,9 @@
     {{ end }}
     </b>•
     {{ .WordCount }} words • {{ .ReadingTime }} minutes read<br>Tags:
-    {{ range .Params.tags }}
-    <a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}">{{ . }}</a>
-    {{ end }}
+
+    {{ range $i, $tag := .Params.tags }}{{ if $i }}, {{ end }}<a href="{{ "/tags/" | relLangURL }}{{ $tag | urlize }}">{{ $tag }}</a>{{ end }}
+
     <div class="post-summary">
         {{ with .Resources.GetMatch .Params.cover }}
         <img class="summary-image" src="{{ .RelPermalink }}" alt="">

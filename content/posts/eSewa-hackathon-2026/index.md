@@ -7,7 +7,9 @@ draft: false
 categories:
   - Travel
 tags:
-  - esewa, sauraha, hackathon
+  - esewa
+  - sauraha
+  - hackathon
 ---
 
 ## Day 1: The boring first part.
